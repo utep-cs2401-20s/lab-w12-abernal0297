@@ -2,7 +2,7 @@ class myBinarySearchTreeNode{
   int myValue;
   myBinarySearchTreeNode left;
   myBinarySearchTreeNode right;
-    
+
   myBinarySearchTreeNode(int inValue){
     // created a new node with empty child pointers
     // done in one line of code
@@ -50,7 +50,9 @@ class myBinarySearchTreeNode{
   public int height(){
      // This method recursively calculates the height of the entire (sub)tree.
      // This method will take O(n) time
-     return -1;
+      int subLHeight = height();
+      int subRHeight = height();
+     return Math.max(subLHeight, subRHeight) + 1;
   }
   
   public int depth(int search){
@@ -58,7 +60,13 @@ class myBinarySearchTreeNode{
      // If the given value is not in the tree, this method returns -1. 
      // Note that if the tree is a proper BST, this method should complete in O(log n) time.
      // Additionally, remember that the depth is the number of nodes on the path from a node to the root 
-     // (i.e. the number of the recursie calls).
+     // (i.e. the number of the recursive calls).
+      depth = search;
+      if(node = null){
+          return 0;
+      }
+      int lDepth = depth(search);
+      int rDepth = depth(search);
     return -1;
   }
 
