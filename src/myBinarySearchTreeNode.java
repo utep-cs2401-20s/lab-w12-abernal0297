@@ -5,13 +5,18 @@ class myBinarySearchTreeNode{
     
   myBinarySearchTreeNode(int inValue){
     // created a new node with empty child pointers
-
+    // done in one line of code
+    // saving myValue into inValue
+      myBinarySearchTreeNode instance = new myBinarySearchTreeNode(inValue);
   }
   
   myBinarySearchTreeNode(int[] A){
     // creates a new Binary Search Tree rooted at the first value in the array
     /// by inserting elements into the tree in the order they are given in A.
-
+    // only need three lines of code in this whole method.
+          this.myValue = myValue;
+          left = null;
+          right = null;
   }
   
   public void insert(int inValue){
@@ -21,8 +26,25 @@ class myBinarySearchTreeNode{
     //    * as the right child, 
     //    * in the left subtree,
     //    * or in the right subtree.
-    // If the value already exists in the tree, no action is taken. 
-    
+    // If the value already exists in the tree, no action is taken.
+    //
+    if(inValue < myValue){
+        if(left != null){ // if there are no nodes on the left...
+            insert(inValue); // then insert the
+        }else{
+            left = new myBinarySearchTreeNode(inValue);
+        }
+    }
+    if(inValue >= myValue){ // if the next value is greater than or equal to myValue...
+        if(right != null){ // and if the right node is not equal to null
+            insert(inValue); // then we will move to the next node of the tree
+        }else{
+            right = new myBinarySearchTreeNode(inValue); // set a new node to store inValue
+        }
+    }
+    if(inValue == myValue){ // if the current number is equal to the value, then the number cannot be inserted in the binary tree.
+        System.out.print("duplicate cannot be added");
+    }
   }
   
   public int height(){
@@ -39,9 +61,16 @@ class myBinarySearchTreeNode{
      // (i.e. the number of the recursie calls).
     return -1;
   }
+
+  public int size(){
+    // This method recursively calculates the number of nodes in the (sub)tree.
+    return 0;
+  }
   
   // Utility function included so you can debug your solution. 
-  public void print() { print(""); }
+  public void print() {
+      print("");
+  }
   private void print(String prefix) {
     System.out.println(prefix + myValue);
     prefix = prefix.replace('\u251C', '\u2502');
