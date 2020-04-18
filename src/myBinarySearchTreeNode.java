@@ -61,25 +61,21 @@ class myBinarySearchTreeNode {
         // Note that if the tree is a proper BST, this method should complete in O(log n) time.
         // Additionally, remember that the depth is the number of nodes on the path from a node to the root
         // (i.e. the number of the recursive calls).
+        int sum = 0;
+        if(this.myValue == search){
+            return 0;
+        }
         if (search < myValue) {
-            return left.depth(search) + 1;
+            if(left != null){
+                return sum + left.depth(search) + 1;
+            }
         }
         if (search > myValue) {
-            return left.depth(search) + 1;
+            if(right != null){
+                return sum + right.depth(search) + 1;
+            }
         }
-        if (search == myValue) {
-            return 0;
-//      }
-//      int lDepth = depth(search);
-//      int rDepth = depth(search);
-//
-//      if(lDepth > rDepth){
-//          return (lDepth + 1);
-//      }else{
-//          return (rDepth + 1);
-//      }
-        }
-        return search;
+            return -2 - sum;
     }
 
 //        public int size(){
@@ -101,15 +97,14 @@ class myBinarySearchTreeNode {
 //        }
 
     // Utility function included so you can debug your solution.
-//  public void print() {
-//      print("");
-//  }
-//  private void print(String prefix) {
-//    System.out.println(prefix + myValue);
-//    prefix = prefix.replace('\u251C', '\u2502');
-//    prefix = prefix.replace('\u2514', ' ');
-//    if(left != null) left.print(prefix + "\u251C ");
-//    if(right != null) right.print(prefix + "\u2514 ");
-//  }
-//    }
+  public void print() {
+      print("");
+  }
+  public void print(String prefix) {
+    System.out.println(prefix + myValue);
+    prefix = prefix.replace('\u251C', '\u2502');
+    prefix = prefix.replace('\u2514', ' ');
+    if(left != null) left.print(prefix + "\u251C ");
+    if(right != null) right.print(prefix + "\u2514 ");
+  }
 }
